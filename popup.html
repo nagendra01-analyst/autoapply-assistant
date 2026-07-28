@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>AutoApply Assistant</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+<h1>AutoApply Assistant</h1>
+<p class="hint">Fills applications from your saved profile and resume. It never auto-submits and never guesses on salary, EEO, or legal questions.</p>
+
+<button id="fillBtn" class="primary">Fill this application</button>
+<div id="fillStatus" class="status"></div>
+
+<h2>Profile</h2>
+<form id="profileForm">
+<label>First name<input type="text" name="firstName" /></label>
+<label>Last name<input type="text" name="lastName" /></label>
+<label>Email<input type="email" name="email" /></label>
+<label>Phone<input type="tel" name="phone" /></label>
+<label>City<input type="text" name="city" /></label>
+<label>State<input type="text" name="state" /></label>
+<label>LinkedIn URL<input type="text" name="linkedinUrl" /></label>
+<label>Portfolio / website<input type="text" name="portfolioUrl" /></label>
+<label>Current title<input type="text" name="currentTitle" /></label>
+<label>Current company<input type="text" name="currentCompany" /></label>
+<button type="submit">Save profile</button>
+<span id="profileSaved" class="saved-msg"></span>
+</form>
+
+<h2>Master resume</h2>
+<p class="hint">Paste your resume once, in plain text. It is used as the only source of facts for tailored content.</p>
+<textarea id="masterResume" rows="8" placeholder="Paste your full resume text here"></textarea>
+<div class="row">
+<label>Resume file (for auto-upload)<input type="file" id="resumeFile" accept=".pdf,.doc,.docx" /></label>
+</div>
+<button id="saveResumeBtn">Save resume</button>
+<span id="resumeSaved" class="saved-msg"></span>
+
+<h2>Recent applications</h2>
+<div id="appLog" class="log"></div>
+
+<p class="footer-note"><a href="options.html" target="_blank">Set your Anthropic API key</a></p>
+
+<script src="popup.js"></script>
+</body>
+</html>
