@@ -1,0 +1,60 @@
+{
+    "manifest_version": 3,
+    "name": "AutoApply Assistant",
+    "version": "1.0.0",
+    "description": "Autofills job applications across career portals and drafts a tailored resume summary and cover letter with Claude. Never auto-submits; flags salary/EEO/legal questions for you to answer.",
+    "permissions": ["storage", "scripting", "tabs"],
+    "host_permissions": ["<all_urls>"],
+    "background": {
+          "service_worker": "background.js",
+          "type": "module"
+    },
+    "action": {
+          "default_popup": "popup.html",
+          "default_title": "AutoApply Assistant"
+    },
+    "options_page": "options.html",
+    "content_scripts": [
+          {
+                  "matches": ["https://www.linkedin.com/*"],
+                  "js": ["lib/field-mapper.js", "lib/risky-fields.js", "content-scripts/generic-autofill.js", "content-scripts/linkedin.js"],
+                  "all_frames": true,
+                  "run_at": "document_idle"
+          },
+          {
+                  "matches": ["https://*.indeed.com/*"],
+                  "js": ["lib/field-mapper.js", "lib/risky-fields.js", "content-scripts/generic-autofill.js", "content-scripts/indeed.js"],
+                  "all_frames": true,
+                  "run_at": "document_idle"
+          },
+          {
+                  "matches": ["https://boards.greenhouse.io/*", "https://job-boards.greenhouse.io/*", "https://*.greenhouse.io/*", "https://jobs.lever.co/*", "https://*.lever.co/*"],
+                  "js": ["lib/field-mapper.js", "lib/risky-fields.js", "content-scripts/generic-autofill.js", "content-scripts/greenhouse-lever.js"],
+                  "all_frames": true,
+                  "run_at": "document_idle"
+          },
+          {
+                  "matches": ["https://*.myworkdayjobs.com/*", "https://*.workday.com/*"],
+                  "js": ["lib/field-mapper.js", "lib/risky-fields.js", "content-scripts/generic-autofill.js", "content-scripts/workday.js"],
+                  "all_frames": true,
+                  "run_at": "document_idle"
+          },
+          {
+                  "matches": ["https://*/*", "http://*/*"],
+                  "exclude_matches": [
+                            "https://www.linkedin.com/*",
+                            "https://*.indeed.com/*",
+                            "https://boards.greenhouse.io/*",
+                            "https://job-boards.greenhouse.io/*",
+                            "https://*.greenhouse.io/*",
+                            "https://jobs.lever.co/*",
+                            "https://*.lever.co/*",
+                            "https://*.myworkdayjobs.com/*",
+                            "https://*.workday.com/*"
+                  ],
+                  "js": ["lib/field-mapper.js", "lib/risky-fields.js", "content-scripts/generic-autofill.js", "content-scripts/generic-site.js"],
+                  "all_frames": true,
+                  "run_at": "document_idle"
+          }
+    ]
+}
