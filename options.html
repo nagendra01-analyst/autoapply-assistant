@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>AutoApply Assistant — Options</title>
+<link rel="stylesheet" href="options.css" />
+</head>
+<body>
+<h1>AutoApply Assistant — Settings</h1>
+
+<h2>Anthropic API key</h2>
+<p class="hint">Your key is stored only in this browser (chrome.storage.local) and is used only to call
+the Anthropic Messages API directly from your browser at api.anthropic.com, to generate a
+tailored resume summary and cover letter for each job. It is never sent anywhere else, and
+never to any server we run — there is no third-party backend in this extension.</p>
+
+<label>API key
+<input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off" />
+</label>
+<button id="saveBtn">Save</button>
+<span id="savedMsg" class="saved-msg"></span>
+
+<p class="hint">You can get an API key from the Anthropic Console. This extension does not create an
+account for you and does not work without your own key.</p>
+
+<script src="options.js"></script>
+</body>
+</html>
