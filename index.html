@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AutoApply Assistant</title>
+<style>
+  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; max-width: 720px; margin: 48px auto; padding: 0 20px; color: #1c1c1c; line-height: 1.6; }
+  h1 { font-size: 26px; margin-bottom: 4px; }
+  .tagline { color: #555; margin-top: 0; }
+  h2 { font-size: 18px; margin-top: 32px; }
+  ul { padding-left: 20px; }
+  code { background: #f2f2f2; padding: 2px 5px; border-radius: 4px; font-size: 13px; }
+  .cta { display: inline-block; margin-top: 20px; background: #2557a7; color: #fff; text-decoration: none; padding: 10px 18px; border-radius: 6px; font-weight: 600; }
+  .cta:hover { background: #1d4785; }
+  footer { margin-top: 48px; color: #777; font-size: 13px; }
+</style>
+</head>
+<body>
+  <h1>AutoApply Assistant</h1>
+  <p class="tagline">A Chrome extension (Manifest V3) that autofills job applications and drafts tailored resume summaries and cover letters with Claude — without ever auto-submitting or guessing on sensitive questions.</p>
+
+  <h2>What it does</h2>
+  <ul>
+    <li>Autofills contact/profile fields and uploads your resume file across LinkedIn, Indeed, Greenhouse, Lever, Workday, and other career portals via a generic fallback adapter.</li>
+    <li>Generates a tailored professional summary, bullet points, and cover letter from your own master resume using the Anthropic Messages API, called directly from your browser with your own API key.</li>
+    <li>Automatically continues the fill flow across new tabs and cross-domain redirects (e.g. LinkedIn &rarr; a company's Workday instance).</li>
+  </ul>
+
+  <h2>What it will never do</h2>
+  <ul>
+    <li>Click Submit or Apply for you — the button is only highlighted in green; final submission is always manual.</li>
+    <li>Guess on salary, EEO, or legal/work-authorization questions — those fields are highlighted in amber for you to answer.</li>
+    <li>Invent resume content not already present in your pasted master resume.</li>
+    <li>Send your resume, job descriptions, or API key anywhere except directly to api.anthropic.com from your own browser.</li>
+  </ul>
+
+  <a class="cta" href="https://github.com/nagendra01-analyst/autoapply-assistant">View source on GitHub</a>
+
+  <footer>This is a best-effort tool, not a guarantee. Always review a filled application before submitting it.</footer>
+</body>
+</html>
